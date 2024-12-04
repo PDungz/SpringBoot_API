@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.BookStore.entity.Book;
@@ -118,4 +119,11 @@ public class BookController {
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
     }
+    
+	// Tim kiem tren tat ca cac truong
+	@GetMapping("/search")
+	public ResponseEntity<List<Book>> searchBooks(@RequestParam("keyword") String keyword) {
+		List<Book> seardchbooks = bookService.searchBooks(keyword);
+		return new ResponseEntity<>(seardchbooks, HttpStatus.OK);
+	}
 }

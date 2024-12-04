@@ -19,4 +19,7 @@ public interface BookService {
 	
 	// Cap nhat 
 	Book putBook(Book book);
+	
+	// Tim kiem tren tat ca cac truong
+	List<Book> searchBooks(String keyword);
 }
